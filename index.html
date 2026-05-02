@@ -182,8 +182,8 @@
     .hero{
       min-height:100vh;
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-      gap:76px;
+      grid-template-columns:minmax(0, 1fr) minmax(360px, .9fr);
+      gap:52px;
       align-items:center;
       padding-top:120px;
     }
@@ -222,10 +222,12 @@
 
     h1{
       position:relative;
-      font-size:78px;
+      font-size:clamp(44px, 5.2vw, 78px);
       line-height:.96;
-      letter-spacing:-4px;
-      max-width:760px;
+      letter-spacing:-3px;
+      max-width:680px;
+      overflow-wrap:break-word;
+      word-break:normal;
     }
 
     h1:after{
@@ -893,7 +895,7 @@
     <div>
       <div class="tag" data-en="[BOOT_SEQUENCE: AI_BEAT_SALES_SYSTEM]" data-ru="[ЗАПУСК: AI-СИСТЕМА ПРОДАЖИ БИТОВ]">[BOOT_SEQUENCE: AI_BEAT_SALES_SYSTEM]</div>
 
-      <h1 data-en="Sell beats through an <span>automated sales engine</span>" data-ru="Продавай биты через <span>автоматизированную систему продаж</span>">
+      <h1 data-en="Sell beats through an <span>automated sales engine</span>" data-ru="Продавай биты через <span>AI-систему продаж</span>">
         Sell beats through an <span>automated sales engine</span>
       </h1>
 
