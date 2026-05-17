@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,6 @@
       --accent:#8cff72;
       --accent2:#3fffd2;
       --warm:#ffd66b;
-      --red:#ff5f52;
       --line:rgba(140,255,114,.18);
     }
 
@@ -136,22 +135,10 @@
       transition:.25s;
     }
 
-    .btn:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-      transform:translateX(-130%);
-      transition:.45s;
-    }
-
     .btn:hover{
       transform:translateY(-5px);
       box-shadow:0 26px 80px rgba(140,255,114,.34);
     }
-
-    .btn:hover:before{transform:translateX(130%)}
 
     .btn.dark{
       background:rgba(140,255,114,.035);
@@ -168,17 +155,6 @@
       padding:155px 24px;
     }
 
-    section:after{
-      content:"";
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:55px;
-      height:1px;
-      background:linear-gradient(90deg,transparent,rgba(140,255,114,.22),transparent);
-      pointer-events:none;
-    }
-
     .hero{
       min-height:100vh;
       display:grid;
@@ -187,8 +163,6 @@
       align-items:center;
       padding-top:120px;
     }
-
-    .hero > *{min-width:0}
 
     .tag{
       position:relative;
@@ -225,9 +199,7 @@
       font-size:clamp(44px, 5.2vw, 78px);
       line-height:.96;
       letter-spacing:-3px;
-      max-width:680px;
-      overflow-wrap:break-word;
-      word-break:normal;
+      max-width:720px;
     }
 
     h1:after{
@@ -237,14 +209,15 @@
       animation:blinkCursor 1.1s steps(2) infinite;
     }
 
+    .accent-line{
+      display:block;
+      color:var(--accent);
+      text-shadow:0 0 10px rgba(140,255,114,.35),0 0 26px rgba(140,255,114,.16);
+    }
+
     @keyframes blinkCursor{
       0%,50%{opacity:1}
       51%,100%{opacity:0}
-    }
-
-    h1 span, h2 span{
-      color:var(--accent);
-      text-shadow:0 0 10px rgba(140,255,114,.35),0 0 26px rgba(140,255,114,.16);
     }
 
     h2{
@@ -252,6 +225,11 @@
       line-height:1.04;
       letter-spacing:-2px;
       margin-bottom:42px;
+    }
+
+    h2 span{
+      color:var(--accent);
+      text-shadow:0 0 10px rgba(140,255,114,.35),0 0 26px rgba(140,255,114,.16);
     }
 
     .lead{
@@ -283,139 +261,18 @@
       padding:11px 14px;
       border-radius:999px;
       font-size:13px;
-      box-shadow:inset 0 0 18px rgba(140,255,114,.025);
-    }
-
-    @keyframes scan{
-      0%{transform:translateX(-110%)}
-      100%{transform:translateX(110%)}
-    }
-
-    .block-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:44px;
-      margin-bottom:62px;
-    }
-
-    .block-head p{
-      color:var(--muted);
-      line-height:1.95;
-      max-width:500px;
-      font-size:16px;
-    }
-
-    .cards, .cases, .faq-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:24px;
-    }
-
-    .card, .node, .case, .faq-item, .who-card, .offer-main, .offer-box, .console-wide, .control-room{
-      position:relative;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(140,255,114,.045),rgba(255,255,255,.015)),rgba(11,18,14,.88);
-      border:1px solid rgba(140,255,114,.13);
-      clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
-      box-shadow:inset 0 0 0 1px rgba(140,255,114,.04),0 0 45px rgba(140,255,114,.045);
-      transition:.3s;
-    }
-
-    .card:before, .node:after, .case:before, .faq-item:before, .who-card:before, .offer-main:before, .offer-box:before, .console-wide:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      background:linear-gradient(90deg,transparent,rgba(63,255,210,.07),transparent);
-      transform:translateX(-120%);
-      animation:cyberScan 8s linear infinite;
-    }
-
-    @keyframes cyberScan{
-      0%{transform:translateX(-120%)}
-      45%{transform:translateX(120%)}
-      100%{transform:translateX(120%)}
-    }
-
-    .card > *, .node > *, .case > *, .faq-item > *, .who-card > *, .offer-main > *, .offer-box > *, .console-wide > *{
-      position:relative;
-      z-index:1;
-    }
-
-    .card{
-      padding:38px;
-      min-height:285px;
-    }
-
-    .card:hover, .node:hover, .case:hover, .faq-item:hover, .who-card:hover{
-      transform:translateY(-8px);
-      border-color:rgba(140,255,114,.42);
-      box-shadow:0 30px 90px rgba(0,0,0,.34),0 0 45px rgba(140,255,114,.06);
-    }
-
-    .card:after{
-      content:attr(data-id);
-      position:absolute;
-      right:22px;
-      bottom:2px;
-      font-family:"Space Grotesk";
-      font-size:82px;
-      color:rgba(140,255,114,.06);
-    }
-
-    .card small, .node small{
-      color:var(--accent2);
-      font-weight:800;
-    }
-
-    .card h3{
-      margin:28px 0 18px;
-      font-size:26px;
-    }
-
-    .card p, .node p, .faq-item p, .who-card p{
-      color:var(--muted);
-      line-height:1.9;
-      font-size:15px;
-    }
-
-    .ai-map{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:20px;
-    }
-
-    .node{
-      padding:34px;
-      min-height:285px;
-    }
-
-    .node:before{
-      content:"";
-      position:absolute;
-      top:-1px;
-      left:28px;
-      width:70px;
-      height:2px;
-      background:var(--accent);
-      box-shadow:0 0 22px rgba(140,255,114,.8);
-      z-index:2;
-    }
-
-    .node h3{
-      font-size:23px;
-      margin:24px 0 18px;
     }
 
     .control-room{
       width:100%;
       padding:32px;
-      border-color:rgba(140,255,114,.20);
+      position:relative;
+      overflow:hidden;
       background:
         radial-gradient(circle at 50% 20%, rgba(140,255,114,.15), transparent 36%),
         linear-gradient(145deg, rgba(13,22,16,.97), rgba(4,9,6,.95));
+      border:1px solid rgba(140,255,114,.20);
+      clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
       box-shadow:0 30px 90px rgba(0,0,0,.38),0 0 70px rgba(140,255,114,.08);
     }
 
@@ -427,6 +284,11 @@
       animation:scan 12s infinite;
       opacity:.35;
       pointer-events:none;
+    }
+
+    @keyframes scan{
+      0%{transform:translateX(-110%)}
+      100%{transform:translateX(110%)}
     }
 
     .control-top{
@@ -544,6 +406,134 @@
       line-height:1.65;
     }
 
+    .block-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:44px;
+      margin-bottom:62px;
+    }
+
+    .block-head p{
+      color:var(--muted);
+      line-height:1.95;
+      max-width:500px;
+      font-size:16px;
+    }
+
+    .cards, .cases, .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .card, .node, .case, .faq-item, .who-card, .offer-main, .offer-box, .console-wide{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,rgba(140,255,114,.045),rgba(255,255,255,.015)),rgba(11,18,14,.88);
+      border:1px solid rgba(140,255,114,.13);
+      clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
+      box-shadow:inset 0 0 0 1px rgba(140,255,114,.04),0 0 45px rgba(140,255,114,.045);
+      transition:.3s;
+    }
+
+    .card{
+      padding:38px;
+      min-height:285px;
+    }
+
+    .card:hover, .node:hover, .case:hover, .faq-item:hover, .who-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(140,255,114,.42);
+      box-shadow:0 30px 90px rgba(0,0,0,.34),0 0 45px rgba(140,255,114,.06);
+    }
+
+    .card:after{
+      content:attr(data-id);
+      position:absolute;
+      right:22px;
+      bottom:2px;
+      font-family:"Space Grotesk";
+      font-size:82px;
+      color:rgba(140,255,114,.06);
+    }
+
+    .card small, .node small{
+      color:var(--accent2);
+      font-weight:800;
+    }
+
+    .card h3{
+      margin:28px 0 18px;
+      font-size:26px;
+    }
+
+    .card p, .node p, .faq-item p, .who-card p{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:15px;
+    }
+
+    .ai-map{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .node{
+      padding:34px;
+      min-height:285px;
+    }
+
+    .node:before{
+      content:"";
+      position:absolute;
+      top:-1px;
+      left:28px;
+      width:70px;
+      height:2px;
+      background:var(--accent);
+      box-shadow:0 0 22px rgba(140,255,114,.8);
+      z-index:2;
+    }
+
+    .node h3{
+      font-size:23px;
+      margin:24px 0 18px;
+    }
+
+    .who-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+    }
+
+    .who-card{padding:38px}
+
+    .who-card h3{
+      font-size:26px;
+      margin-bottom:20px;
+    }
+
+    .who-card ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .who-card li{
+      padding:15px 0;
+      color:#c6cad7;
+      border-bottom:1px solid var(--line);
+      line-height:1.65;
+    }
+
+    .who-card li:before{
+      content:"→ ";
+      color:var(--accent2);
+      font-weight:800;
+    }
+
     .console-wide{
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
@@ -600,38 +590,6 @@
       box-shadow:0 0 24px rgba(140,255,114,.75);
     }
 
-    .who-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:24px;
-    }
-
-    .who-card{padding:38px}
-
-    .who-card h3{
-      font-size:26px;
-      margin-bottom:20px;
-    }
-
-    .who-card ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-
-    .who-card li{
-      padding:15px 0;
-      color:#c6cad7;
-      border-bottom:1px solid var(--line);
-      line-height:1.65;
-    }
-
-    .who-card li:before{
-      content:"→ ";
-      color:var(--accent2);
-      font-weight:800;
-    }
-
     .case img{
       width:100%;
       height:310px;
@@ -668,7 +626,6 @@
 
     .point b{
       color:var(--accent);
-      text-shadow:0 0 10px rgba(140,255,114,.35),0 0 26px rgba(140,255,114,.16);
     }
 
     .point p{
@@ -847,7 +804,7 @@
       section{padding:115px 22px}
       .nav-links{display:none}
       h1{
-        font-size:50px;
+        font-size:48px;
         letter-spacing:-2px;
       }
       h2{font-size:38px}
@@ -881,67 +838,69 @@
     <div class="nav">
       <div class="logo">PROD-X</div>
       <div class="nav-links">
-        <a href="#engine" data-en="engine" data-ru="система">engine</a>
-        <a href="#inside" data-en="inside" data-ru="внутри">inside</a>
-        <a href="#cases" data-en="cases" data-ru="кейсы">cases</a>
+        <a href="#engine" data-en="system" data-ru="система">система</a>
+        <a href="#inside" data-en="inside" data-ru="внутри">внутри</a>
+        <a href="#cases" data-en="cases" data-ru="кейсы">кейсы</a>
         <a href="#faq" data-en="faq" data-ru="faq">faq</a>
-        <a href="#apply" data-en="access" data-ru="доступ">access</a>
+        <a href="#apply" data-en="access" data-ru="доступ">доступ</a>
       </div>
-      <button class="lang-btn" id="langBtn" type="button">RU</button>
+      <button class="lang-btn" id="langBtn" type="button">EN</button>
     </div>
   </header>
 
   <section class="hero reveal">
     <div>
-      <div class="tag" data-en="[BOOT_SEQUENCE: AI_BEAT_SALES_SYSTEM]" data-ru="[ЗАПУСК: СИСТЕМА ПРОДАЖИ БИТОВ]">[BOOT_SEQUENCE: AI_BEAT_SALES_SYSTEM]</div>
+      <div class="tag" data-en="[BOOT_SEQUENCE: AUTOMATED_BEAT_SALES_SYSTEM]" data-ru="[ЗАПУСК: СИСТЕМА ПРОДАЖИ БИТОВ]">[ЗАПУСК: СИСТЕМА ПРОДАЖИ БИТОВ]</div>
 
-      <h1 data-en="Sell beats through an <span>automated sales engine</span>" data-ru="Продавай биты через <span>автоматическую систему продаж</span>">
-        Sell beats through an <span>automated sales engine</span>
+      <h1 
+        data-en='Sell beats through an <span class="accent-line">automated</span><span class="accent-line">sales system</span>' 
+        data-ru='Продавай биты через <span class="accent-line">автоматизированную</span><span class="accent-line">систему продаж</span>'>
+        Продавай биты через <span class="accent-line">автоматизированную</span><span class="accent-line">систему продаж</span>
       </h1>
 
-      <p class="lead" data-en="PROD-X is a course + implementation system for producers. You build an AI workflow that finds artists, sends outreach, follows up, uploads beats to YouTube and tracks every lead until money appears." data-ru="PROD-X — это курс и система внедрения для продюсеров. Ты собираешь AI-процесс, который находит артистов, делает рассылку, дожимает, загружает биты на YouTube и отслеживает каждого лида до оплаты.">
-        PROD-X is a course + implementation system for producers. You build an AI workflow that finds artists, sends outreach, follows up, uploads beats to YouTube and tracks every lead until money appears.
+      <p class="lead" data-en="PROD-X is a course and implementation system for producers. You build a repeatable process that finds artists, sends outreach, follows up, uploads beats to YouTube and tracks every lead until payment." data-ru="PROD-X — это курс и система внедрения для продюсеров. Ты собираешь повторяемый процесс, который находит артистов, делает рассылку, дожимает, загружает биты на YouTube и отслеживает каждого лида до оплаты.">
+        PROD-X — это курс и система внедрения для продюсеров. Ты собираешь повторяемый процесс, который находит артистов, делает рассылку, дожимает, загружает биты на YouTube и отслеживает каждого лида до оплаты.
       </p>
 
       <div class="mini-proof">
-        <span data-en="Lead search" data-ru="Поиск лидов">Lead search</span>
-        <span data-en="Outreach scripts" data-ru="Скрипты рассылки">Outreach scripts</span>
-        <span data-en="YouTube workflow" data-ru="YouTube-система">YouTube workflow</span>
-        <span data-en="Sales tracker" data-ru="Трекер продаж">Sales tracker</span>
+        <span data-en="Lead search" data-ru="Поиск лидов">Поиск лидов</span>
+        <span data-en="Outreach scripts" data-ru="Скрипты рассылки">Скрипты рассылки</span>
+        <span data-en="YouTube system" data-ru="YouTube-система">YouTube-система</span>
+        <span data-en="Sales tracker" data-ru="Трекер продаж">Трекер продаж</span>
       </div>
 
       <div class="hero-actions">
-        <a href="https://www.paypal.com/invoice/p/#GNLWBC6E3ZP89PUZ" class="btn" data-en="request access" data-ru="получить доступ">request access</a>
-        <a href="#engine" class="btn dark" data-en="inspect system" data-ru="смотреть систему">inspect system</a>
+        <a href="https://www.paypal.com/invoice/p/#GNLWBC6E3ZP89PUZ" class="btn" data-en="request access" data-ru="получить доступ">получить доступ</a>
+        <a href="#engine" class="btn dark" data-en="inspect system" data-ru="смотреть систему">смотреть систему</a>
       </div>
     </div>
 
     <div class="control-room">
       <div class="control-top">
-        <span data-en="[LIVE_COURSE_SYSTEM]" data-ru="[ЖИВАЯ_СИСТЕМА_КУРСА]">[LIVE_COURSE_SYSTEM]</span>
-        <b data-en="● RUNNING" data-ru="● РАБОТАЕТ">● RUNNING</b>
+        <span data-en="[LIVE_COURSE_SYSTEM]" data-ru="[ЖИВАЯ_СИСТЕМА_КУРСА]">[ЖИВАЯ_СИСТЕМА_КУРСА]</span>
+        <b data-en="● RUNNING" data-ru="● РАБОТАЕТ">● РАБОТАЕТ</b>
       </div>
 
       <div class="clean-stats">
         <div class="stat-box">
-          <small data-en="MESSAGES SENT" data-ru="СООБЩЕНИЙ ОТПРАВЛЕНО">MESSAGES SENT</small>
+          <small data-en="MESSAGES SENT" data-ru="СООБЩЕНИЙ ОТПРАВЛЕНО">СООБЩЕНИЙ ОТПРАВЛЕНО</small>
           <h3><span id="msgCount">0</span></h3>
         </div>
         <div class="stat-box">
-          <small data-en="EMAILS SENT" data-ru="EMAIL ОТПРАВЛЕНО">EMAILS SENT</small>
+          <small data-en="EMAILS SENT" data-ru="EMAIL ОТПРАВЛЕНО">EMAIL ОТПРАВЛЕНО</small>
           <h3><span id="emailCount">0</span></h3>
         </div>
         <div class="stat-box">
-          <small data-en="REPLIES RECEIVED" data-ru="ПОЛУЧЕНО ОТВЕТОВ">REPLIES RECEIVED</small>
+          <small data-en="REPLIES RECEIVED" data-ru="ПОЛУЧЕНО ОТВЕТОВ">ПОЛУЧЕНО ОТВЕТОВ</small>
           <h3><span id="replyCount">0</span></h3>
         </div>
       </div>
 
       <div class="control-feed">
-        <div><span>01</span><p data-en="AI finds targeted artists" data-ru="AI находит целевых артистов">AI finds targeted artists</p></div>
-        <div><span>02</span><p data-en="Scripts start real conversations" data-ru="Скрипты запускают диалоги">Scripts start real conversations</p></div>
-        <div><span>03</span><p data-en="YouTube uploads build traffic" data-ru="YouTube-загрузки дают трафик">YouTube uploads build traffic</p></div>
-        <div><span>04</span><p data-en="Pipeline turns replies into sales" data-ru="Воронка превращает ответы в продажи">Pipeline turns replies into sales</p></div>
+        <div><span>01</span><p data-en="System finds targeted artists" data-ru="Система находит целевых артистов">Система находит целевых артистов</p></div>
+        <div><span>02</span><p data-en="Scripts start real conversations" data-ru="Скрипты запускают диалоги">Скрипты запускают диалоги</p></div>
+        <div><span>03</span><p data-en="YouTube uploads build traffic" data-ru="YouTube-загрузки дают трафик">YouTube-загрузки дают трафик</p></div>
+        <div><span>04</span><p data-en="Pipeline turns replies into sales" data-ru="Воронка превращает ответы в продажи">Воронка превращает ответы в продажи</p></div>
       </div>
     </div>
   </section>
@@ -950,30 +909,30 @@
     <div class="block-head">
       <div>
         <div class="tag">[ERROR_LOG]</div>
-        <h2 data-en="Your beats are not the problem. <span>The system is.</span>" data-ru="Проблема не в битах. <span>Проблема в системе.</span>">Your beats are not the problem. <span>The system is.</span></h2>
+        <h2 data-en="Your beats are not the problem. <span>The system is.</span>" data-ru="Проблема не в битах. <span>Проблема в системе.</span>">Проблема не в битах. <span>Проблема в системе.</span></h2>
       </div>
       <p data-en="Most producers lose because their workflow is random: random uploads, random messages, random follow-ups, random income." data-ru="Большинство продюсеров проигрывают, потому что всё происходит хаотично: случайные загрузки, случайные сообщения, случайные дожимы, случайный доход.">
-        Most producers lose because their workflow is random: random uploads, random messages, random follow-ups, random income.
+        Большинство продюсеров проигрывают, потому что всё происходит хаотично: случайные загрузки, случайные сообщения, случайные дожимы, случайный доход.
       </p>
     </div>
 
     <div class="cards">
       <div class="card" data-id="01">
         <small>PROCESS_FAIL</small>
-        <h3 data-en="No daily pipeline" data-ru="Нет автоматизированных рассылок">No daily pipeline</h3>
-        <p data-en="You create beats, but there is no machine that pushes them into the market every day." data-ru="Ты делаешь биты, но нет машины, которая каждый день выводит их на рынок.">You create beats, but there is no machine that pushes them into the market every day.</p>
+        <h3 data-en="No daily pipeline" data-ru="Нет ежедневного процесса">Нет ежедневного процесса</h3>
+        <p data-en="You create beats, but there is no mechanism that pushes them into the market every day." data-ru="Ты делаешь биты, но нет механизма, который каждый день выводит их на рынок.">Ты делаешь биты, но нет механизма, который каждый день выводит их на рынок.</p>
       </div>
 
       <div class="card" data-id="02">
         <small>OUTREACH_FAIL</small>
-        <h3 data-en="No lead system" data-ru="Нет системы лидов">No lead system</h3>
-        <p data-en="You do not know which artists to contact, when to follow up or how to move them to payment." data-ru="Ты не знаешь, каким артистам писать, когда дожимать и как доводить до оплаты.">You do not know which artists to contact, when to follow up or how to move them to payment.</p>
+        <h3 data-en="No lead system" data-ru="Нет системы лидов">Нет системы лидов</h3>
+        <p data-en="You do not know which artists to contact, when to follow up or how to move them to payment." data-ru="Ты не знаешь, каким артистам писать, когда дожимать и как доводить до оплаты.">Ты не знаешь, каким артистам писать, когда дожимать и как доводить до оплаты.</p>
       </div>
 
       <div class="card" data-id="03">
         <small>UPLOAD_FAIL</small>
-        <h3 data-en="No YouTube engine" data-ru="Нет YouTube-движка">No YouTube engine</h3>
-        <p data-en="Titles, tags, descriptions and posting schedules are inconsistent, so visibility stays low." data-ru="Названия, теги, описания и график загрузок хаотичны — поэтому охваты остаются низкими.">Titles, tags, descriptions and posting schedules are inconsistent, so visibility stays low.</p>
+        <h3 data-en="No YouTube engine" data-ru="Нет YouTube-движка">Нет YouTube-движка</h3>
+        <p data-en="Titles, tags, descriptions and posting schedules are inconsistent, so visibility stays low." data-ru="Названия, теги, описания и график загрузок хаотичны — поэтому охваты остаются низкими.">Названия, теги, описания и график загрузок хаотичны — поэтому охваты остаются низкими.</p>
       </div>
     </div>
   </section>
@@ -981,34 +940,34 @@
   <section id="engine" class="reveal">
     <div class="block-head">
       <div>
-        <div class="tag">[ENGINE_MODULES]</div>
-        <h2 data-en="What the AI system <span>does for you</span>" data-ru="Что AI-система <span>делает за тебя</span>">What the AI system <span>does for you</span></h2>
+        <div class="tag">[SYSTEM_MODULES]</div>
+        <h2 data-en="What the system <span>does for you</span>" data-ru="Что система <span>делает за тебя</span>">Что система <span>делает за тебя</span></h2>
       </div>
     </div>
 
     <div class="ai-map">
       <div class="node">
         <small>MODULE_A</small>
-        <h3 data-en="Artist Scanner" data-ru="Сканер артистов">Artist Scanner</h3>
-        <p data-en="Finds artists by genre, activity, audience, recent releases and buying signals." data-ru="Находит артистов по жанру, активности, аудитории, свежим релизам и сигналам покупки.">Finds artists by genre, activity, audience, recent releases and buying signals.</p>
+        <h3 data-en="Artist Scanner" data-ru="Сканер артистов">Сканер артистов</h3>
+        <p data-en="Finds artists by genre, activity, audience, recent releases and buying signals." data-ru="Находит артистов по жанру, активности, аудитории, свежим релизам и сигналам покупки.">Находит артистов по жанру, активности, аудитории, свежим релизам и сигналам покупки.</p>
       </div>
 
       <div class="node">
         <small>MODULE_B</small>
-        <h3 data-en="Message Core" data-ru="Ядро рассылки">Message Core</h3>
-        <p data-en="Writes personalized outreach and follow-ups so conversations do not disappear." data-ru="Пишет персонализированные сообщения и дожимы, чтобы диалоги не умирали.">Writes personalized outreach and follow-ups so conversations do not disappear.</p>
+        <h3 data-en="Message Core" data-ru="Ядро рассылки">Ядро рассылки</h3>
+        <p data-en="Uses prepared scripts and follow-ups so conversations do not disappear." data-ru="Использует готовые скрипты и дожимы, чтобы диалоги не умирали.">Использует готовые скрипты и дожимы, чтобы диалоги не умирали.</p>
       </div>
 
       <div class="node">
         <small>MODULE_C</small>
-        <h3 data-en="YouTube Loader" data-ru="YouTube-загрузчик">YouTube Loader</h3>
-        <p data-en="Creates upload titles, tags, descriptions and posting structure for each beat." data-ru="Создает названия, теги, описания и структуру загрузок для каждого бита.">Creates upload titles, tags, descriptions and posting structure for each beat.</p>
+        <h3 data-en="YouTube Loader" data-ru="YouTube-загрузчик">YouTube-загрузчик</h3>
+        <p data-en="Builds upload titles, tags, descriptions and posting structure for each beat." data-ru="Собирает названия, теги, описания и структуру загрузок для каждого бита.">Собирает названия, теги, описания и структуру загрузок для каждого бита.</p>
       </div>
 
       <div class="node">
         <small>MODULE_D</small>
-        <h3 data-en="Deal Tracker" data-ru="Трекер сделок">Deal Tracker</h3>
-        <p data-en="Tracks leads, replies, hot prospects, offers, payments and next actions." data-ru="Отслеживает лидов, ответы, горячих клиентов, офферы, оплаты и следующие действия.">Tracks leads, replies, hot prospects, offers, payments and next actions.</p>
+        <h3 data-en="Deal Tracker" data-ru="Трекер сделок">Трекер сделок</h3>
+        <p data-en="Tracks leads, replies, hot prospects, offers, payments and next actions." data-ru="Отслеживает лидов, ответы, горячих клиентов, офферы, оплаты и следующие действия.">Отслеживает лидов, ответы, горячих клиентов, офферы, оплаты и следующие действия.</p>
       </div>
     </div>
   </section>
@@ -1017,28 +976,28 @@
     <div class="block-head">
       <div>
         <div class="tag">[WHO_THIS_IS_FOR]</div>
-        <h2 data-en="This is for producers who want <span>structure, not motivation</span>" data-ru="Это для продюсеров, которым нужна <span>структура, а не мотивация</span>">This is for producers who want <span>structure, not motivation</span></h2>
+        <h2 data-en="This is for producers who want <span>structure, not motivation</span>" data-ru="Это для продюсеров, которым нужна <span>структура, а не мотивация</span>">Это для продюсеров, которым нужна <span>структура, а не мотивация</span></h2>
       </div>
     </div>
 
     <div class="who-grid">
       <div class="who-card">
-        <h3 data-en="You should join if..." data-ru="Тебе подходит, если...">You should join if...</h3>
+        <h3 data-en="You should join if..." data-ru="Тебе подходит, если...">Тебе подходит, если...</h3>
         <ul>
-          <li data-en="You already make beats but sales are unstable." data-ru="Ты уже делаешь биты, но продажи нестабильные.">You already make beats but sales are unstable.</li>
-          <li data-en="You do not know how to find artists every day." data-ru="Ты не знаешь, как каждый день находить артистов.">You do not know how to find artists every day.</li>
-          <li data-en="You want scripts, templates and a clear daily process." data-ru="Тебе нужны скрипты, шаблоны и понятный ежедневный процесс.">You want scripts, templates and a clear daily process.</li>
-          <li data-en="You want to stop guessing what to do next." data-ru="Ты хочешь перестать гадать, что делать дальше.">You want to stop guessing what to do next.</li>
+          <li data-en="You already make beats but sales are unstable." data-ru="Ты уже делаешь биты, но продажи нестабильные.">Ты уже делаешь биты, но продажи нестабильные.</li>
+          <li data-en="You do not know how to find artists every day." data-ru="Ты не знаешь, как каждый день находить артистов.">Ты не знаешь, как каждый день находить артистов.</li>
+          <li data-en="You want scripts, templates and a clear daily process." data-ru="Тебе нужны скрипты, шаблоны и понятный ежедневный процесс.">Тебе нужны скрипты, шаблоны и понятный ежедневный процесс.</li>
+          <li data-en="You want to stop guessing what to do next." data-ru="Ты хочешь перестать гадать, что делать дальше.">Ты хочешь перестать гадать, что делать дальше.</li>
         </ul>
       </div>
 
       <div class="who-card">
-        <h3 data-en="This is not for you if..." data-ru="Не подходит, если...">This is not for you if...</h3>
+        <h3 data-en="This is not for you if..." data-ru="Не подходит, если...">Не подходит, если...</h3>
         <ul>
-          <li data-en="You expect money without sending messages or doing work." data-ru="Ты ждешь денег без сообщений и действий.">You expect money without sending messages or doing work.</li>
-          <li data-en="You want only theory and do not want to implement." data-ru="Ты хочешь только теорию и не хочешь внедрять.">You want only theory and do not want to implement.</li>
-          <li data-en="You are not ready to track leads, replies and follow-ups." data-ru="Ты не готов отслеживать лидов, ответы и дожимы.">You are not ready to track leads, replies and follow-ups.</li>
-          <li data-en="You do not want to treat beats like a business." data-ru="Ты не хочешь относиться к битам как к бизнесу.">You do not want to treat beats like a business.</li>
+          <li data-en="You expect money without sending messages or doing work." data-ru="Ты ждешь денег без сообщений и действий.">Ты ждешь денег без сообщений и действий.</li>
+          <li data-en="You want only theory and do not want to implement." data-ru="Ты хочешь только теорию и не хочешь внедрять.">Ты хочешь только теорию и не хочешь внедрять.</li>
+          <li data-en="You are not ready to track leads, replies and follow-ups." data-ru="Ты не готов отслеживать лидов, ответы и дожимы.">Ты не готов отслеживать лидов, ответы и дожимы.</li>
+          <li data-en="You do not want to treat beats like a business." data-ru="Ты не хочешь относиться к битам как к бизнесу.">Ты не хочешь относиться к битам как к бизнесу.</li>
         </ul>
       </div>
     </div>
@@ -1048,7 +1007,7 @@
     <div class="block-head">
       <div>
         <div class="tag">[LIVE_OUTPUT]</div>
-        <h2 data-en="The system turns work into <span>numbers</span>" data-ru="Система превращает работу в <span>цифры</span>">The system turns work into <span>numbers</span></h2>
+        <h2 data-en="The system turns work into <span>numbers</span>" data-ru="Система превращает работу в <span>цифры</span>">Система превращает работу в <span>цифры</span></h2>
       </div>
     </div>
 
@@ -1073,8 +1032,8 @@
         <h3>UPLOADS</h3>
         <div class="line">beats queued: <b>18 / 20</b></div>
         <div class="bar"><i style="width:90%"></i></div>
-        <div class="line">descriptions generated: <b>18</b></div>
-        <div class="line">tags generated: <b>360</b></div>
+        <div class="line">descriptions ready: <b>18</b></div>
+        <div class="line">tags ready: <b>360</b></div>
       </div>
     </div>
   </section>
@@ -1083,7 +1042,7 @@
     <div class="block-head">
       <div>
         <div class="tag">[STUDENT_CASES]</div>
-        <h2 data-en="Students who stopped <span>waiting for luck</span>" data-ru="Ученики, которые перестали <span>ждать удачу</span>">Students who stopped <span>waiting for luck</span></h2>
+        <h2 data-en="Students who stopped <span>waiting for luck</span>" data-ru="Ученики, которые перестали <span>ждать удачу</span>">Ученики, которые перестали <span>ждать удачу</span></h2>
       </div>
     </div>
 
@@ -1095,12 +1054,12 @@
           <div class="handle">@prodbygaara</div>
           <div class="points">
             <div class="point">
-              <b data-en="Point A" data-ru="Точка А">Point A</b>
-              <p data-en="$500/month income from beats." data-ru="$500 в месяц дохода с битов.">$500/month income from beats.</p>
+              <b data-en="Point A" data-ru="Точка А">Точка А</b>
+              <p data-en="$500/month income from beats." data-ru="$500 в месяц дохода с битов.">$500 в месяц дохода с битов.</p>
             </div>
             <div class="point">
-              <b data-en="Point B" data-ru="Точка Б">Point B</b>
-              <p data-en="$3,700 after applying the tools." data-ru="$3,700 после применения инструментов.">$3,700 after applying the tools.</p>
+              <b data-en="Point B" data-ru="Точка Б">Точка Б</b>
+              <p data-en="$3,700 after applying the tools." data-ru="$3,700 после применения инструментов.">$3,700 после применения инструментов.</p>
             </div>
           </div>
         </div>
@@ -1109,16 +1068,16 @@
       <div class="case">
         <img src="evgeniy.jpg" alt="Evgeniy Petkov">
         <div class="case-body">
-          <h3 data-en="Evgeniy Petkov" data-ru="Евгений Петков">Evgeniy Petkov</h3>
+          <h3 data-en="Evgeniy Petkov" data-ru="Евгений Петков">Евгений Петков</h3>
           <div class="handle">producer case</div>
           <div class="points">
             <div class="point">
-              <b data-en="Point A" data-ru="Точка А">Point A</b>
-              <p data-en="No results, small city, random $200 sales." data-ru="Нет результата, маленький город, случайные продажи на $200.">No results, small city, random $200 sales.</p>
+              <b data-en="Point A" data-ru="Точка А">Точка А</b>
+              <p data-en="No results, small city, random $200 sales." data-ru="Нет результата, маленький город, случайные продажи на $200.">Нет результата, маленький город, случайные продажи на $200.</p>
             </div>
             <div class="point">
-              <b data-en="Point B" data-ru="Точка Б">Point B</b>
-              <p data-en="$1,500 in the first 2 months after applying the tools." data-ru="$1,500 в первые 2 месяца после применения инструментов.">$1,500 in the first 2 months after applying the tools.</p>
+              <b data-en="Point B" data-ru="Точка Б">Точка Б</b>
+              <p data-en="$1,500 in the first 2 months after applying the tools." data-ru="$1,500 в первые 2 месяца после применения инструментов.">$1,500 в первые 2 месяца после применения инструментов.</p>
             </div>
           </div>
         </div>
@@ -1127,16 +1086,16 @@
       <div class="case">
         <img src="ivan.jpg" alt="Ivan Tovbaz">
         <div class="case-body">
-          <h3 data-en="Ivan Tovbaz" data-ru="Иван Товбаз">Ivan Tovbaz</h3>
+          <h3 data-en="Ivan Tovbaz" data-ru="Иван Товбаз">Иван Товбаз</h3>
           <div class="handle">YouTube grid case</div>
           <div class="points">
             <div class="point">
-              <b data-en="Point A" data-ru="Точка А">Point A</b>
-              <p data-en="Beats brought no income. No successful credits." data-ru="Биты не приносили никакого дохода. Успешных кредитсов не было.">Beats brought no income. No successful credits.</p>
+              <b data-en="Point A" data-ru="Точка А">Точка А</b>
+              <p data-en="Beats brought no income. No successful credits." data-ru="Биты не приносили никакого дохода. Успешных кредитсов не было.">Биты не приносили никакого дохода. Успешных кредитсов не было.</p>
             </div>
             <div class="point">
-              <b data-en="Point B" data-ru="Точка Б">Point B</b>
-              <p data-en="A grid of YouTube channels bringing monetization and stable monthly BeatStars sales from $100 per beat." data-ru="Сетка YouTube-каналов приносит монетизацию и стабильные ежемесячные продажи через BeatStars от $100 за бит.">A grid of YouTube channels bringing monetization and stable monthly BeatStars sales from $100 per beat.</p>
+              <b data-en="Point B" data-ru="Точка Б">Точка Б</b>
+              <p data-en="A grid of YouTube channels bringing monetization and stable monthly BeatStars sales from $100 per beat." data-ru="Сетка YouTube-каналов приносит монетизацию и стабильные ежемесячные продажи через BeatStars от $100 за бит.">Сетка YouTube-каналов приносит монетизацию и стабильные ежемесячные продажи через BeatStars от $100 за бит.</p>
             </div>
           </div>
         </div>
@@ -1148,35 +1107,35 @@
     <div class="story-grid">
       <div class="story-card">
         <div class="tag">[ORIGIN_FILE]</div>
-        <h3 data-en="How I got here" data-ru="Как я дошел до этого">How I got here</h3>
+        <h3 data-en="How I got here" data-ru="Как я дошел до этого">Как я дошел до этого</h3>
         <p data-en="I started like most producers: making beats, uploading randomly, sending messages and wondering why nothing was stable." data-ru="Я начинал как большинство продюсеров: делал биты, рандомно загружал, писал сообщения и не понимал, почему нет стабильности.">
-          I started like most producers: making beats, uploading randomly, sending messages and wondering why nothing was stable.
+          Я начинал как большинство продюсеров: делал биты, рандомно загружал, писал сообщения и не понимал, почему нет стабильности.
         </p>
       </div>
 
       <div class="timeline">
         <div class="t-item">
           <b>PHASE_01</b>
-          <h3 data-en="I thought better beats would solve everything" data-ru="Я думал, что лучшие биты решат всё">I thought better beats would solve everything</h3>
-          <p data-en="But better beats without traffic, trust and follow-up still stayed invisible." data-ru="Но даже хорошие биты без трафика, доверия и дожима остаются невидимыми.">But better beats without traffic, trust and follow-up still stayed invisible.</p>
+          <h3 data-en="I thought better beats would solve everything" data-ru="Я думал, что лучшие биты решат всё">Я думал, что лучшие биты решат всё</h3>
+          <p data-en="But better beats without traffic, trust and follow-up still stayed invisible." data-ru="Но даже хорошие биты без трафика, доверия и дожима остаются невидимыми.">Но даже хорошие биты без трафика, доверия и дожима остаются невидимыми.</p>
         </div>
 
         <div class="t-item">
           <b>PHASE_02</b>
-          <h3 data-en="I learned that sales is a system" data-ru="Я понял, что продажи — это система">I learned that sales is a system</h3>
-          <p data-en="Research, messaging, offer, timing and tracking mattered as much as the product." data-ru="Поиск клиентов, сообщения, оффер, тайминг и трекинг важны так же, как сам продукт.">Research, messaging, offer, timing and tracking mattered as much as the product.</p>
+          <h3 data-en="I learned that sales is a system" data-ru="Я понял, что продажи — это система">Я понял, что продажи — это система</h3>
+          <p data-en="Research, messaging, offer, timing and tracking mattered as much as the product." data-ru="Поиск клиентов, сообщения, оффер, тайминг и трекинг важны так же, как сам продукт.">Поиск клиентов, сообщения, оффер, тайминг и трекинг важны так же, как сам продукт.</p>
         </div>
 
         <div class="t-item">
           <b>PHASE_03</b>
-          <h3 data-en="I started using AI for the boring work" data-ru="Я начал использовать AI для рутины">I started using AI for the boring work</h3>
-          <p data-en="Lead lists, scripts, upload metadata and follow-ups became faster and cleaner." data-ru="Списки лидов, скрипты, метаданные для загрузок и дожимы стали быстрее и чище.">Lead lists, scripts, upload metadata and follow-ups became faster and cleaner.</p>
+          <h3 data-en="I started systemizing the boring work" data-ru="Я начал систематизировать рутину">Я начал систематизировать рутину</h3>
+          <p data-en="Lead lists, scripts, upload metadata and follow-ups became faster and cleaner." data-ru="Списки лидов, скрипты, метаданные для загрузок и дожимы стали быстрее и чище.">Списки лидов, скрипты, метаданные для загрузок и дожимы стали быстрее и чище.</p>
         </div>
 
         <div class="t-item">
           <b>PHASE_04</b>
-          <h3 data-en="The workflow became stronger than motivation" data-ru="Процесс стал сильнее мотивации">The workflow became stronger than motivation</h3>
-          <p data-en="When the process was clear, execution stopped depending on mood." data-ru="Когда процесс стал понятным, результат перестал зависеть от настроения.">When the process was clear, execution stopped depending on mood.</p>
+          <h3 data-en="The workflow became stronger than motivation" data-ru="Процесс стал сильнее мотивации">Процесс стал сильнее мотивации</h3>
+          <p data-en="When the process was clear, execution stopped depending on mood." data-ru="Когда процесс стал понятным, результат перестал зависеть от настроения.">Когда процесс стал понятным, результат перестал зависеть от настроения.</p>
         </div>
       </div>
     </div>
@@ -1186,24 +1145,24 @@
     <div class="offer">
       <div class="offer-main">
         <div class="tag">[ACCESS_PACKAGE]</div>
-        <h2 data-en="What you get inside <span>PROD-X</span>" data-ru="Что ты получаешь внутри <span>PROD-X</span>">What you get inside <span>PROD-X</span></h2>
-        <p data-en="You get the course, templates, AI prompts, outreach scripts, YouTube upload workflow, lead tracker and daily execution protocol. The goal is to leave with a working system, not just notes." data-ru="Ты получаешь курс, шаблоны, AI-промпты, скрипты рассылки, систему загрузки на YouTube, трекер лидов и ежедневный протокол действий. Цель — не конспект, а рабочая система.">
-          You get the course, templates, AI prompts, outreach scripts, YouTube upload workflow, lead tracker and daily execution protocol. The goal is to leave with a working system, not just notes.
+        <h2 data-en="What you get inside <span>PROD-X</span>" data-ru="Что ты получаешь внутри <span>PROD-X</span>">Что ты получаешь внутри <span>PROD-X</span></h2>
+        <p data-en="You get the course, templates, outreach scripts, YouTube upload workflow, lead tracker and daily execution protocol. The goal is to leave with a working system, not just notes." data-ru="Ты получаешь курс, шаблоны, скрипты рассылки, систему загрузки на YouTube, трекер лидов и ежедневный протокол действий. Цель — не конспект, а рабочая система.">
+          Ты получаешь курс, шаблоны, скрипты рассылки, систему загрузки на YouTube, трекер лидов и ежедневный протокол действий. Цель — не конспект, а рабочая система.
         </p>
       </div>
 
       <div class="offer-box">
-        <h3 data-en="INCLUDED:" data-ru="ВНУТРИ:">INCLUDED:</h3>
+        <h3 data-en="INCLUDED:" data-ru="ВНУТРИ:">ВНУТРИ:</h3>
         <ul>
-          <li data-en="AI artist scanner setup" data-ru="Настройка AI-сканера артистов">AI artist scanner setup</li>
-          <li data-en="Beat sales outreach scripts" data-ru="Скрипты рассылки для продажи битов">Beat sales outreach scripts</li>
-          <li data-en="Follow-up sequences" data-ru="Сценарии дожима">Follow-up sequences</li>
-          <li data-en="YouTube upload system" data-ru="Система загрузки на YouTube">YouTube upload system</li>
-          <li data-en="Offer and pricing structure" data-ru="Структура оффера и цен">Offer and pricing structure</li>
-          <li data-en="Sales pipeline dashboard" data-ru="Дашборд продаж">Sales pipeline dashboard</li>
-          <li data-en="Daily execution checklist" data-ru="Ежедневный чеклист действий">Daily execution checklist</li>
+          <li data-en="Artist scanner setup" data-ru="Настройка сканера артистов">Настройка сканера артистов</li>
+          <li data-en="Beat sales outreach scripts" data-ru="Скрипты рассылки для продажи битов">Скрипты рассылки для продажи битов</li>
+          <li data-en="Follow-up sequences" data-ru="Сценарии дожима">Сценарии дожима</li>
+          <li data-en="YouTube upload system" data-ru="Система загрузки на YouTube">Система загрузки на YouTube</li>
+          <li data-en="Offer and pricing structure" data-ru="Структура оффера и цен">Структура оффера и цен</li>
+          <li data-en="Sales pipeline dashboard" data-ru="Дашборд продаж">Дашборд продаж</li>
+          <li data-en="Daily execution checklist" data-ru="Ежедневный чеклист действий">Ежедневный чеклист действий</li>
         </ul>
-        <a href="https://www.paypal.com/invoice/p/#GNLWBC6E3ZP89PUZ" class="btn" style="width:100%" data-en="request access" data-ru="получить доступ">request access</a>
+        <a href="https://www.paypal.com/invoice/p/#GNLWBC6E3ZP89PUZ" class="btn" style="width:100%" data-en="request access" data-ru="получить доступ">получить доступ</a>
       </div>
     </div>
   </section>
@@ -1212,58 +1171,58 @@
     <div class="block-head">
       <div>
         <div class="tag">[FAQ]</div>
-        <h2 data-en="Questions before <span>you enter</span>" data-ru="Вопросы перед <span>входом</span>">Questions before <span>you enter</span></h2>
+        <h2 data-en="Questions before <span>you enter</span>" data-ru="Вопросы перед <span>входом</span>">Вопросы перед <span>входом</span></h2>
       </div>
     </div>
 
     <div class="faq-grid">
       <div class="faq-item">
-        <h3 data-en="Do I need to be advanced?" data-ru="Нужно быть опытным?">Do I need to be advanced?</h3>
-        <p data-en="No. You need beats, basic discipline and willingness to follow a system. The course gives you the structure." data-ru="Нет. Нужны биты, базовая дисциплина и готовность идти по системе. Структуру ты получаешь внутри.">No. You need beats, basic discipline and willingness to follow a system. The course gives you the structure.</p>
+        <h3 data-en="Do I need to be advanced?" data-ru="Нужно быть опытным?">Нужно быть опытным?</h3>
+        <p data-en="No. You need beats, basic discipline and willingness to follow a system. The course gives you the structure." data-ru="Нет. Нужны биты, базовая дисциплина и готовность идти по системе. Структуру ты получаешь внутри.">Нет. Нужны биты, базовая дисциплина и готовность идти по системе. Структуру ты получаешь внутри.</p>
       </div>
 
       <div class="faq-item">
-        <h3 data-en="Is this only about AI?" data-ru="Это только про AI?">Is this only about AI?</h3>
-        <p data-en="No. AI is used to speed up research, messages and uploads. The real value is the full sales workflow." data-ru="Нет. AI ускоряет поиск, сообщения и загрузки. Главная ценность — полный процесс продаж.">No. AI is used to speed up research, messages and uploads. The real value is the full sales workflow.</p>
+        <h3 data-en="Is this only about automation?" data-ru="Это только про автоматизацию?">Это только про автоматизацию?</h3>
+        <p data-en="No. Automation speeds up research, messages and uploads. The real value is the full sales workflow." data-ru="Нет. Автоматизация ускоряет поиск, сообщения и загрузки. Главная ценность — полный процесс продаж.">Нет. Автоматизация ускоряет поиск, сообщения и загрузки. Главная ценность — полный процесс продаж.</p>
       </div>
 
       <div class="faq-item">
-        <h3 data-en="Will it sell for me automatically?" data-ru="Оно само будет продавать?">Will it sell for me automatically?</h3>
-        <p data-en="It helps you build a repeatable pipeline. You still need to execute, reply to artists and improve your offer." data-ru="Система помогает построить повторяемый пайплайн. Но тебе всё равно нужно действовать, отвечать артистам и улучшать оффер.">It helps you build a repeatable pipeline. You still need to execute, reply to artists and improve your offer.</p>
+        <h3 data-en="Will it sell for me automatically?" data-ru="Оно само будет продавать?">Оно само будет продавать?</h3>
+        <p data-en="It helps you build a repeatable pipeline. You still need to execute, reply to artists and improve your offer." data-ru="Система помогает построить повторяемый пайплайн. Но тебе всё равно нужно действовать, отвечать артистам и улучшать оффер.">Система помогает построить повторяемый пайплайн. Но тебе всё равно нужно действовать, отвечать артистам и улучшать оффер.</p>
       </div>
 
       <div class="faq-item">
-        <h3 data-en="What if I have no audience?" data-ru="А если нет аудитории?">What if I have no audience?</h3>
-        <p data-en="That is exactly why the system starts with lead research and outreach instead of waiting for random traffic." data-ru="Именно поэтому система начинается с поиска лидов и рассылки, а не с ожидания случайного трафика.">That is exactly why the system starts with lead research and outreach instead of waiting for random traffic.</p>
+        <h3 data-en="What if I have no audience?" data-ru="А если нет аудитории?">А если нет аудитории?</h3>
+        <p data-en="That is exactly why the system starts with lead research and outreach instead of waiting for random traffic." data-ru="Именно поэтому система начинается с поиска лидов и рассылки, а не с ожидания случайного трафика.">Именно поэтому система начинается с поиска лидов и рассылки, а не с ожидания случайного трафика.</p>
       </div>
 
       <div class="faq-item">
-        <h3 data-en="How fast can I use it?" data-ru="Как быстро можно использовать?">How fast can I use it?</h3>
-        <p data-en="You can start implementing the workflow immediately after access: scanner, scripts, tracker and upload process." data-ru="Ты можешь начать внедрять процесс сразу после доступа: сканер, скрипты, трекер и систему загрузки.">You can start implementing the workflow immediately after access: scanner, scripts, tracker and upload process.</p>
+        <h3 data-en="How fast can I use it?" data-ru="Как быстро можно использовать?">Как быстро можно использовать?</h3>
+        <p data-en="You can start implementing the workflow immediately after access: scanner, scripts, tracker and upload process." data-ru="Ты можешь начать внедрять процесс сразу после доступа: сканер, скрипты, трекер и систему загрузки.">Ты можешь начать внедрять процесс сразу после доступа: сканер, скрипты, трекер и систему загрузки.</p>
       </div>
 
       <div class="faq-item">
-        <h3 data-en="What is the main outcome?" data-ru="Главный результат?">What is the main outcome?</h3>
-        <p data-en="You stop guessing and get a clear daily system for finding artists, contacting them, following up and tracking sales." data-ru="Ты перестаешь гадать и получаешь понятную ежедневную систему: находить артистов, писать им, дожимать и отслеживать продажи.">You stop guessing and get a clear daily system for finding artists, contacting them, following up and tracking sales.</p>
+        <h3 data-en="What is the main outcome?" data-ru="Главный результат?">Главный результат?</h3>
+        <p data-en="You stop guessing and get a clear daily system for finding artists, contacting them, following up and tracking sales." data-ru="Ты перестаешь гадать и получаешь понятную ежедневную систему: находить артистов, писать им, дожимать и отслеживать продажи.">Ты перестаешь гадать и получаешь понятную ежедневную систему: находить артистов, писать им, дожимать и отслеживать продажи.</p>
       </div>
     </div>
   </section>
 
   <section id="apply" class="final reveal">
     <div class="tag">[FINAL_COMMAND]</div>
-    <h2 data-en="Your beats should not sit in folders." data-ru="Твои биты не должны лежать в папках.">Your beats should not sit in folders.</h2>
-    <p data-en="Build the AI-assisted system that finds artists, sends messages, uploads to YouTube and tracks the path to payment." data-ru="Собери AI-систему, которая находит артистов, отправляет сообщения, загружает биты на YouTube и ведет путь до оплаты.">
-      Build the AI-assisted system that finds artists, sends messages, uploads to YouTube and tracks the path to payment.
+    <h2 data-en="Your beats should not sit in folders." data-ru="Твои биты не должны лежать в папках.">Твои биты не должны лежать в папках.</h2>
+    <p data-en="Build the system that finds artists, sends messages, uploads to YouTube and tracks the path to payment." data-ru="Собери систему, которая находит артистов, отправляет сообщения, загружает биты на YouTube и ведет путь до оплаты.">
+      Собери систему, которая находит артистов, отправляет сообщения, загружает биты на YouTube и ведет путь до оплаты.
     </p>
-    <a href="https://www.paypal.com/invoice/p/#GNLWBC6E3ZP89PUZ" class="btn" data-en="apply for PROD-X" data-ru="подать заявку в PROD-X">apply for PROD-X</a>
+    <a href="https://www.paypal.com/invoice/p/#GNLWBC6E3ZP89PUZ" class="btn" data-en="apply for PROD-X" data-ru="подать заявку в PROD-X">подать заявку в PROD-X</a>
   </section>
 
   <footer>
-    PROD-X // AI-ASSISTED BEAT SALES INFRASTRUCTURE // STATUS: ONLINE
+    PROD-X // AUTOMATED BEAT SALES INFRASTRUCTURE // STATUS: ONLINE
   </footer>
 
   <script>
-    let currentLang = "en";
+    let currentLang = "ru";
 
     function setLang(lang){
       currentLang = lang;
